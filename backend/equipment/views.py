@@ -4,9 +4,12 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from .serializers import CSVUploadSerializer
 import pandas as pd
+from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
 
 class UploadCSV(GenericAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+
     parser_classes = [MultiPartParser, FormParser]
     serializer_class = CSVUploadSerializer
 
